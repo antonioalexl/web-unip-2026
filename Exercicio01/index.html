@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portifólio do Alex</title>
+  </head>
+  <body>
+	<header>
+	
+	<!-- No <header>: coloque seu nome em <h1>,  -->
+	<!-- uma breve descrição em <p> e um menu de navegação  -->
+	<!-- <nav> com links âncora para as seções: Sobre, -->
+	<!-- Habilidades, Projetos e Contato. -->
+	<h1>Alex</h1>
+	<p>Olá sou o Alex, trabalho com programação desde 2009</p>
+	<nav>
+	 <a href="sobre"> Sobre </a>
+	 <a href="habilidades"> Habilidades </a>
+	 <a href="projetos"> Projetos </a>
+	 <a href="contato">Contato</a>
+	</nav>
+	
+	 <section id="sobre">
+		<figure>
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEsnoVPFis3kpNgSdzt_AWVo2L7lAF6OMOeS7Um0mWfEj3ihOm_6GCUH9Mm1Ph5IjVwxFGNA6YBtWxdQld4ZgpCoCu8uoWQmBNzrUxJuIu&s=10" alt="Foto do Alex"/>
+			<p> Olá, sou o Alex, trabalho com programação Web! </p>
+		</figure>
+	 
+	 </section>
+	 
+	 <section id="habilidades">
+		<ul>
+			<li> HTML 5</li>
+			<li> css 3</li>
+			<li> javascript</li>
+			<li> jquery</li>
+		</ul>
+		<!-- Adicione uma <table> em alguma seção (ex: tabela de habilidades com nível,  -->
+		<!-- grade horária ou comparativo de tecnologias). -->
+		<table>
+		<thead>
+			<tr>
+			
+				<th> Habilidade </th>
+				<th> Nível </th>
+				<th> Carga Horária </th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Html5 </td>
+				<td>Avançado </td>
+				<td>360horas </td>
+			</tr>
+			<tr>
+				<td> Css3</td>
+				<td> Avançado </td>
+				<td>360horas </td>
+			</tr>
+		</tbody>
+		
+		</table>
+		
+	 </section>
+	 
+	  <section id="projetos">
+		<h2>Projetos </h2>
+		<article>
+		 <h3> Projeto para Agro</h3>
+		 <p>Foi desenvolvido usando react, nodejs e postgresql </p>
+		 
+		  <h3> Projeto para Telemetria de caminhão</h3>
+		 <p>Foi desenvolvido usando angular, c# e sql server </p>
+		</article>
+	 </section>
+	 <!--Inicio da seçao contato-->
+	 <section id="contato">
+	 
+	  <form>
+		<p>
+			<label for="nome">Nome: </label><br>
+			<input id="nome" type="text" placeholder="Digite seu nome">
+		</p>
+	  
+	  <p>
+		<label for="email">Email: </label><br>
+		<input id="email" type="email" placeholder="Digite seu email">
+	  </p>
+	  
+	  <p>
+		<label for="mensagem">Mensagem: </label><br>
+		<textarea id="mensagem"  placeholder="Digite a mensagem"></textarea>
+	  </p>
+	  <p>
+		<button type="submit" > Enviar</button>
+
+	  </p>
+	  
+	  </form>
+		
+	 </section>
+	<!--final da seçao contato-->
+
+	</nav>
+	
+	</header>
+  
+  </body>
+</html>
