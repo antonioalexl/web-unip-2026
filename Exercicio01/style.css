@@ -1,0 +1,28 @@
+*{
+	
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	
+
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 16px;
+  font-style: normal;
+  font-variation-settings:    "wdth" 100;
+	line-height:1.6;
+}
+
+header{
+	color:white;
+	text-align:center;
+	padding: 30px;
+	background-color: gray;
+}
+
+Estilize o <header>: aplique background com cor escura, 
+texto branco (color: white), 
+centralização (text-align: center) e padding generoso (ex: 30px 0).
