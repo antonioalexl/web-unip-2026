@@ -23,6 +23,62 @@ header{
 	background-color: gray;
 }
 
-Estilize o <header>: aplique background com cor escura, 
-texto branco (color: white), 
-centralização (text-align: center) e padding generoso (ex: 30px 0).
+.container{
+	max-width:960px;
+	margin: 0 auto;
+	padding: 20px;
+	
+	 padding-right: 20px;
+	padding-left: 20px;
+	
+}
+
+nav a{
+	
+	text-decoration: none;
+	color: red;
+}
+
+nav a:hover{
+	
+	text-decoration: none;
+	color: green ;
+	transition: 0.8s;
+}
+/* Estilize cada <section>: aplique padding: 40px 0 e nos  */
+/* títulos <h2> adicione uma borda lateral com border-left: 4px solid [sua cor] e padding-left: 12px. */
+section{
+	
+	padding: 40px 0;	
+	
+}
+
+section h2{
+	margin-left:20px;
+	border-left: 4px solid blue;
+	padding-left:12px;
+	
+}
+
+.card{
+	
+	
+	background-color: white;
+	margin:10px;
+	
+	border-radius: 12px;
+	padding: 24px;
+	box-shadow: 0 2px 8px rgba(0,0,0,1.0);
+	
+}
+
+
+footer{
+	
+	background-color: black;
+	color:  #94A3B8;
+	text-align: center;
+	padding:20px;
+}
+/* Estilize os links do <nav>: remova o sublinhado (text-decoration: none), defina uma cor de destaque  */
+/* e adicione efeito hover com mudança de cor usando transition: 0.3s. */
