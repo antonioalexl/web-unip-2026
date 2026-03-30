@@ -1,84 +1,293 @@
-*{
-	
+/* ============================================
+   RESET CSS
+   Remove margens, paddings e aplica border-box
+   em todos os elementos para evitar surpresas
+   de espaçamento (item p)
+   ============================================ */
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-body{
-	
-
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 16px;
-  font-style: normal;
-  font-variation-settings:    "wdth" 100;
-	line-height:1.6;
+/* ============================================
+   BODY — Layout geral com Flexbox (item oo)
+   display: flex + flex-direction: column faz o
+   body virar um container flexbox vertical.
+   min-height: 100vh garante que ocupe pelo menos
+   a tela inteira, assim o footer fica embaixo.
+   ============================================ */
+body {
+	font-family: "Roboto", sans-serif; /* Fonte importada do Google Fonts (item q) */
+	font-optical-sizing: auto;
+	font-size: 16px;
+	font-style: normal;
+	font-variation-settings: "wdth" 100;
+	line-height: 1.6; /* Espaçamento entre linhas para melhor leitura (item q) */
+	display: flex; /* Ativa o flexbox no body */
+	flex-direction: column; /* Empilha header, main e footer verticalmente */
+	min-height: 100vh; /* Ocupa no mínimo 100% da altura da tela */
 }
 
-header{
-	color:white;
-	text-align:center;
-	padding: 30px;
-	background-color: gray;
+/* ============================================
+   MAIN — Ocupa todo o espaço restante (item oo)
+   flex: 1 faz o main "esticar" e preencher
+   o espaço entre o header e o footer.
+   ============================================ */
+main {
+	flex: 1;
 }
 
-.container{
-	max-width:960px;
-	margin: 0 auto;
+/* ============================================
+   CONTAINER — Centraliza o conteúdo (items r, ee)
+   min() escolhe o menor valor entre 960px e 90%
+   da tela, assim funciona sem media query.
+   margin: 0 auto centraliza horizontalmente.
+   ============================================ */
+.container {
+	width: min(960px, 90%); /* Máximo 960px, mas em telas menores usa 90% */
+	margin: 0 auto; /* Centraliza o container na página */
+	padding: 20px; /* Espaçamento interno lateral (item r) */
+}
+
+/* ============================================
+   TIPOGRAFIA FLUIDA com clamp() (item ff)
+   clamp(mínimo, ideal, máximo)
+   O tamanho da fonte cresce conforme a tela,
+   mas nunca fica menor que o mínimo nem maior
+   que o máximo.
+   ============================================ */
+h1 {
+	font-size: clamp(1.5rem, 4vw, 2.5rem); /* Mín: 1.5rem | Ideal: 4% da tela | Máx: 2.5rem */
+}
+
+h2 {
+	font-size: clamp(1.2rem, 3vw, 1.8rem); /* Mín: 1.2rem | Ideal: 3% da tela | Máx: 1.8rem */
+}
+
+/* ============================================
+   HEADER — Flexbox em coluna no mobile (items s, pp)
+   No mobile: tudo empilhado verticalmente e centralizado.
+   No tablet (768px): muda para row com space-between.
+   ============================================ */
+header {
+	color: white; /* Texto branco (item s) */
+	text-align: center; /* Centraliza o texto (item s) */
+	padding: 30px 20px; /* Espaçamento interno generoso (item s) */
+	background-color: gray; /* Fundo escuro (item s) */
+	display: flex; /* Ativa flexbox (item pp) */
+	flex-direction: column; /* Empilha nome, descrição e nav em coluna (item pp) */
+	align-items: center; /* Centraliza os itens horizontalmente (item pp) */
+	gap: 12px; /* Espaço entre os itens filhos (item pp) */
+}
+
+/* ============================================
+   NAV — Mobile first em coluna (items t, hh, pp)
+   Começa em coluna (mobile) e muda para row
+   no breakpoint de 768px (tablet).
+   ============================================ */
+nav {
+	display: flex; /* Ativa flexbox nos links */
+	flex-direction: column; /* Links empilhados verticalmente no mobile (item hh) */
+	gap: 8px; /* Espaço entre os links (item hh) */
+}
+
+/* Links do nav sem sublinhado e com cor de destaque (item t) */
+nav a {
+	text-decoration: none; /* Remove o sublinhado padrão */
+	color: white; /* Cor de destaque dos links */
+	transition: 0.3s; /* Transição suave para o hover (item t) */
+}
+
+/* Efeito hover nos links — muda de cor suavemente (item t) */
+nav a:hover {
+	color: lightgreen;
+}
+
+/* ============================================
+   SECTIONS — Espaçamento com clamp() (items u, gg)
+   O padding se adapta automaticamente ao
+   tamanho da tela usando clamp().
+   ============================================ */
+section {
+	padding: clamp(16px, 4vw, 64px) 0; /* Mín: 16px | Ideal: 4% da tela | Máx: 64px */
+}
+
+/* Títulos h2 com borda lateral decorativa (item u) */
+section h2 {
+	border-left: 4px solid blue; /* Barra azul à esquerda do título */
+	padding-left: 12px; /* Espaço entre a barra e o texto */
+	margin-bottom: 16px; /* Espaço abaixo do título */
+}
+
+/* ============================================
+   SEÇÃO SOBRE — Flexbox (item rr)
+   No mobile: coluna (foto em cima, texto embaixo).
+   No tablet (768px): row (foto à esquerda, texto à direita).
+   ============================================ */
+#sobre {
+	display: flex; /* Ativa flexbox */
+	flex-direction: column; /* Mobile: empilha foto e texto */
+	gap: 24px; /* Espaço entre foto e texto */
+	align-items: center; /* Centraliza os itens */
+}
+
+/* A foto não encolhe e tem tamanho fixo de 200px (item rr) */
+#sobre figure {
+	flex: 0 0 200px; /* flex-grow: 0 | flex-shrink: 0 | flex-basis: 200px */
+}
+
+/* O texto ocupa o espaço restante (item rr) */
+#sobre > p {
+	flex: 1; /* Estica para preencher o espaço disponível */
+}
+
+/* ============================================
+   IMAGENS RESPONSIVAS (item dd)
+   max-width: 100% impede que a imagem ultrapasse
+   o container. height: auto mantém a proporção.
+   ============================================ */
+img {
+	max-width: 100%; /* Nunca ultrapassa o container */
+	height: auto; /* Mantém a proporção original */
+}
+
+/* ============================================
+   IMAGEM DE PERFIL — Opacity + hover (item y)
+   Começa com 80% de opacidade e vai para 100%
+   ao passar o mouse, com transição suave.
+   ============================================ */
+.imagem {
+	border-radius: 50%; /* Deixa a imagem redonda (item rr) */
+	opacity: 0.8; /* 80% de opacidade (item y) */
+	transition: 0.3s; /* Transição suave ao passar o mouse (item y) */
+}
+
+.imagem:hover {
+	opacity: 1; /* 100% de opacidade no hover */
+}
+
+/* ============================================
+   TABELA DE HABILIDADES (item h)
+   ============================================ */
+table {
+	width: 100%; /* Ocupa toda a largura disponível */
+	border-collapse: collapse; /* Remove espaços entre as bordas das células */
+	margin-top: 16px;
+}
+
+th, td {
+	border: 1px solid #ccc; /* Borda cinza clara nas células */
+	padding: 8px 12px; /* Espaçamento interno das células */
+	text-align: left;
+}
+
+/* ============================================
+   GRID DE PROJETOS — Flexbox (item ss)
+   flex-wrap: wrap permite que os cards quebrem
+   de linha quando não cabem lado a lado.
+   ============================================ */
+.projects {
+	display: flex; /* Ativa flexbox no container de projetos */
+	flex-wrap: wrap; /* Permite quebra de linha dos cards */
+	gap: 24px; /* Espaço entre os cards */
+}
+
+/* ============================================
+   CARDS DOS PROJETOS (items v, w, tt)
+   flex: 1 1 280px significa:
+   - flex-grow: 1 → pode crescer para preencher espaço
+   - flex-shrink: 1 → pode encolher se necessário
+   - flex-basis: 280px → tamanho base de 280px
+   Isso cria um grid adaptável sem media query!
+   ============================================ */
+.card {
+	background-color: white; /* Fundo branco (item v) */
+	border-radius: 12px; /* Bordas arredondadas (item v) */
+	padding: 24px; /* Espaçamento interno (item v) */
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Sombra sutil (item v) */
+	display: flex; /* Ativa flexbox dentro do card (item tt) */
+	flex-direction: column; /* Conteúdo do card em coluna (item tt) */
+	flex: 1 1 280px; /* Tamanho base 280px, cresce e encolhe (item ss) */
+	transition: 0.3s; /* Transição suave para o hover (item w) */
+}
+
+/* Efeito hover — sombra aumenta ao passar o mouse (item w) */
+.card:hover {
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16); /* Sombra maior no hover */
+}
+
+/* ============================================
+   SEÇÃO CONTATO — Centralizada com Flexbox (item uu)
+   justify-content + align-items: center é a
+   técnica clássica de centralização com Flexbox.
+   ============================================ */
+#contato {
+	display: flex;
+	flex-direction: column;
+	justify-content: center; /* Centraliza verticalmente */
+	align-items: center; /* Centraliza horizontalmente */
+}
+
+/* Formulário de contato com largura máxima */
+#contato form {
+	width: 100%;
+	max-width: 500px; /* Não fica largo demais em telas grandes */
+}
+
+/* Inputs e textarea ocupam toda a largura do formulário */
+#contato input,
+#contato textarea {
+	width: 100%;
+}
+
+/* ============================================
+   FOOTER (item x)
+   Fundo escuro com texto cinza claro e centralizado.
+   Fica sempre no rodapé graças ao flex do body.
+   ============================================ */
+footer {
+	background-color: black; /* Fundo escuro */
+	color: #94A3B8; /* Cinza claro para o texto */
+	text-align: center; /* Texto centralizado */
 	padding: 20px;
-	
-	 padding-right: 20px;
-	padding-left: 20px;
-	
 }
 
-nav a{
-	
-	text-decoration: none;
-	color: red;
+/* ============================================
+   BOTÕES — Hover com mudança de opacidade (item 8)
+   ============================================ */
+button {
+	transition: 0.3s; /* Transição suave */
+	cursor: pointer; /* Cursor de mãozinha ao passar */
 }
 
-nav a:hover{
-	
-	text-decoration: none;
-	color: green ;
-	transition: 0.8s;
-}
-/* Estilize cada <section>: aplique padding: 40px 0 e nos  */
-/* t�tulos <h2> adicione uma borda lateral com border-left: 4px solid [sua cor] e padding-left: 12px. */
-section{
-	
-	padding: 40px 0;	
-	
+button:hover {
+	opacity: 0.8; /* Fica levemente transparente no hover */
 }
 
-section h2{
-	margin-left:20px;
-	border-left: 4px solid blue;
-	padding-left:12px;
-	
-}
+/* ============================================
+   MEDIA QUERY — TABLET (min-width: 768px)
+   Mobile First: as regras acima são para mobile,
+   e aqui adicionamos mudanças para telas maiores.
+   (items ii, qq, rr)
+   ============================================ */
+@media (min-width: 768px) {
 
-.card{
-	
-	
-	background-color: white;
-	margin:10px;
-	
-	border-radius: 12px;
-	padding: 24px;
-	box-shadow: 0 2px 8px rgba(0,0,0,1.0);
-	
-}
+	/* Nav muda de coluna para linha no tablet (item ii) */
+	nav {
+		flex-direction: row;
+		gap: 16px;
+	}
 
+	/* Header muda para row com espaço entre itens (item qq) */
+	header {
+		flex-direction: row;
+		justify-content: space-between;
+	}
 
-footer{
-	
-	background-color: black;
-	color:  #94A3B8;
-	text-align: center;
-	padding:20px;
+	/* Seção Sobre: foto à esquerda, texto à direita (item rr) */
+	#sobre {
+		flex-direction: row;
+		gap: 40px;
+	}
 }
-/* Estilize os links do <nav>: remova o sublinhado (text-decoration: none), defina uma cor de destaque  */
-/* e adicione efeito hover com mudan�a de cor usando transition: 0.3s. */
